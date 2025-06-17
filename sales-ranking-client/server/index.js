@@ -6,13 +6,15 @@ import db from './db.js';
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: '*' } });
+import cors from 'cors';
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 app.use(express.json());
 
 app.get('/api/ranking', async (req, res) => {
   const { year, month } = req.query;
   const [rows] = await db.query(
-    `SELECT f.idFun, f.nome, f.foto, SUM(v.valor) AS total_vendas
+    `SELECT f.idFun, f.nome,  SUM(v.valor) AS total_vendas
        FROM venda v
        JOIN venda_fun vf ON v.id = vf.idVenda
        JOIN cad_fun f ON vf.idFun = f.idFun

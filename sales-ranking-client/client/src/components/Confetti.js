@@ -8,17 +8,8 @@ export default function Confetti() {
     fire();
   }, []);
   const fire = useCallback(() => {
-    if (refInstance.current) refInstance.current({
-      particleCount: 200,
-      spread: 160,
-      origin: { y: 0.5 }
-    });
+    refInstance.current?.({ particleCount: 200, spread: 160, origin: { y: 0.5 } });
   }, []);
 
-  return (
-    <ReactCanvasConfetti
-      refConfetti={getInstance}
-      style={{ position: 'fixed', width: '100%', height: '100%', pointerEvents: 'none' }}
-    />
-  );
+  return <ReactCanvasConfetti refConfetti={getInstance} style={{ position: 'fixed', width: '100%', height: '100%', pointerEvents: 'none' }} />;
 }
