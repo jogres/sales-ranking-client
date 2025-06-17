@@ -14,7 +14,7 @@ app.use(express.json());
 app.get('/api/ranking', async (req, res) => {
   const { year, month } = req.query;
   const [rows] = await db.query(
-    `SELECT f.idFun, f.nome, f.foto, SUM(v.valor) AS total_vendas
+    `SELECT f.idFun, f.nome, TO_BASE64(f.foto) AS fotoBase64,  SUM(v.valor) AS total_vendas
        FROM venda v
        JOIN venda_fun vf ON v.id = vf.idVenda
        JOIN cad_fun f ON vf.idFun = f.idFun

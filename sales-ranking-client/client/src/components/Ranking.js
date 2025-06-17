@@ -31,7 +31,7 @@ export default function Ranking({ year, month, trigger }) {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
         >
-          <img src={first?.foto} alt={bannerName} className="banner-img" />
+          <img src={`data:image/jpeg;base64,${first?.fotoBase64}`} alt={bannerName} className="banner-img" />
           <div className="banner-text">👑 {bannerName} chegou ao Top 1! 👑</div>
         </Motion.div>
       )}
@@ -41,7 +41,7 @@ export default function Ranking({ year, month, trigger }) {
           {data.map((u, idx) => (
             <li key={u.idFun} className={`rank-item rank-${idx+1}`}>
               <span className="rank">{idx + 1}</span>
-              <img src={u.foto} alt={u.nome} />
+              <img src={`data:image/jpeg;base64,${u.fotoBase64}`} alt={u.nome} />
               <span className="name-text">{u.nome}</span>
             </li>
           ))}
@@ -52,19 +52,19 @@ export default function Ranking({ year, month, trigger }) {
         <div className="podium">
           <div className="podium-item second">
             <div className="number-bottom">2</div>
-            <img src={second?.foto} alt={second?.nome} />
+            <img src={`data:image/jpeg;base64,${second?.fotoBase64}`} alt={second?.nome} />
             <div className="name">{second?.nome}</div>
           </div>
           <div className="podium-item first">
             {first?.nome && <Confetti key={first.idFun} />}
             <div className="crown">👑</div>
-            <img src={first?.foto} alt={first?.nome} />
+            <img src={`data:image/jpeg;base64,${first?.fotoBase64}`} alt={first?.nome} />
             <div className="name">{first?.nome}</div>
             <div className="number-bottom">1</div>
           </div>
           <div className="podium-item third">
             <div className="number-bottom">3</div>
-            <img src={third?.foto} alt={third?.nome} />
+            <img src={`data:image/jpeg;base64,${third?.fotoBase64}`} alt={third?.nome} />
             <div className="name">{third?.nome}</div>
           </div>
         </div>
