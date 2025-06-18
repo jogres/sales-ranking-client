@@ -16,7 +16,7 @@ export default function App() {
 
   return (
     <div className="container">
-      <h1 className="main-title">Ranking de Vendas</h1>
+      
       <div className="controls">
         <div className="select-wrapper">
           <select value={year} onChange={e => setYear(Number(e.target.value))}>
